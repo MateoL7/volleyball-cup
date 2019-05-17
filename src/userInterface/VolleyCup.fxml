@@ -21,7 +21,7 @@
                   <TextField fx:id="spectatorId" layoutX="54.0" layoutY="359.0" prefHeight="35.0" prefWidth="292.0" />
                   <Button fx:id="searchSpectator" layoutX="365.0" layoutY="361.0" mnemonicParsing="false" onAction="#searchSpectator" prefHeight="26.0" prefWidth="101.0" text="Search" />
                   <TextField fx:id="participantId" layoutX="51.0" layoutY="545.0" prefHeight="35.0" prefWidth="292.0" />
-                  <Button fx:id="searchParticipant" layoutX="366.0" layoutY="548.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Search" />
+                  <Button fx:id="searchParticipant" layoutX="366.0" layoutY="548.0" mnemonicParsing="false" onAction="#searchParticipant" prefHeight="26.0" prefWidth="101.0" text="Search" />
                   <Label layoutX="51.0" layoutY="517.0" prefHeight="32.0" prefWidth="200.0" text="Participant Id:">
                      <font>
                         <Font size="22.0" />
@@ -37,17 +37,17 @@
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="fileMessage" layoutX="107.0" layoutY="228.0" prefHeight="88.0" prefWidth="493.0" text="Message">
+                  <Label fx:id="fileMessage" layoutX="53.0" layoutY="228.0" prefHeight="88.0" prefWidth="659.0" text="Message">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="spectatorMessage" layoutX="93.0" layoutY="391.0" prefHeight="110.0" prefWidth="450.0" text="Message">
+                  <Label fx:id="spectatorMessage" layoutX="53.0" layoutY="391.0" prefHeight="110.0" prefWidth="616.0" text="Message">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="participantMessage" layoutX="86.0" layoutY="582.0" prefHeight="91.0" prefWidth="381.0" text="Message">
+                  <Label fx:id="participantMessage" layoutX="50.0" layoutY="582.0" prefHeight="91.0" prefWidth="569.0" text="Message">
                      <font>
                         <Font size="22.0" />
                      </font>

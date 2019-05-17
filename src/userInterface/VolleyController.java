@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import model.Participant;
 import model.Spectator;
 import model.VolleyballCup;
 
@@ -86,6 +87,7 @@ public class VolleyController {
 	private String fileName;
 	
 	private Spectator s;
+	private Participant p;
 	
 	private long before;
 	private long after;
@@ -128,12 +130,13 @@ public class VolleyController {
 	public void loadFile(ActionEvent event) {
 		try {
 			vc.loadInfo(fileName);
-			fileMessage.setText("The spectators have been loaded");
+			fileMessage.setText("The file has been loaded succesfully");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
 		catch(NullPointerException np) {
-			fileMessage.setText("There was a problem with loading\nthe spectators. Null Pointer");
+			fileMessage.setText("There was a problem with loading\nthe file");
+			np.printStackTrace();
 		}
 	}
 	
@@ -151,11 +154,34 @@ public class VolleyController {
 			birthday.setText("BirthDay:	"+s.getBirthday());
 			Image image = new Image(s.getPhoto());
 			photo.setImage(image);
+			spectatorMessage.setText("Found");
 		}
 		else {
-			spectatorMessage.setText("No spectator found with that Id");
+			spectatorMessage.setText("No spectator found with the id: " + idSpec);
 		}
 		after = System.currentTimeMillis();
 		spectatorTime.setText("Time: " + ((after-before)/1000) + "s");
+	}
+	public void searchParticipant(ActionEvent event) {
+		String idPar = participantId.getText();
+		before = System.currentTimeMillis();
+		if(vc.searchParticipant(idPar) != null) {
+			p = vc.searchParticipant(idPar);
+			id.setText("Id:	"+p.getId());
+			firstName.setText("First Name:	"+p.getFirstName());
+			lastName.setText("Last Name:	"+p.getLastName());
+			email.setText("Email:	"+p.getEmail());
+			gender.setText("Gender:	"+p.getGender());
+			country.setText("Country:	"+p.getCountry());
+			birthday.setText("BirthDay:	"+p.getBirthday());
+			Image image = new Image(p.getPhoto());
+			photo.setImage(image);
+			participantMessage.setText("Found");
+		}
+		else {
+			participantMessage.setText("No participant found with the id: " + idPar);
+		}
+		after = System.currentTimeMillis();
+		participantTime.setText("Time: " + ((after-before)/1000) + "s");
 	}
 }
