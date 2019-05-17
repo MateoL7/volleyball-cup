@@ -14,16 +14,20 @@ public class VolleyballCup {
 		BufferedReader br = new BufferedReader(new FileReader(new File(path)));
 		String line = br.readLine();
 		while(line != null) {
-			String[] info = line.split(",");
-			String id = info[0];
-			String fn = info[1];
-			String ln = info[2];
-			String em = info[3];
-			String gn = info[4];
-			String cn = info[5];
-			String ph = info[6];
-			String bd = info[7];
-			addSpectator(id, fn, ln, em, gn, cn, ph, bd);
+			if(line.charAt(0) != '#') {
+				String[] info = line.split(",");
+				String id = info[0];
+				String fn = info[1];
+				String ln = info[2];
+				String em = info[3];
+				String gn = info[4];
+				String cn = info[5];
+				String ph = info[6];
+				String bd = info[7];
+				addSpectator(id, fn, ln, em, gn, cn, ph, bd);
+			}
+				
+				line = br.readLine();
 		}
 		System.out.println(root.getId());
 		br.close();
@@ -61,9 +65,11 @@ public class VolleyballCup {
 	public Spectator searchSpectator(String id) {
 		Spectator found = null;
 		Spectator current = root;
-		while(current != null) {
+		boolean keep = true;
+		while(current != null && keep) {
 			if(current.getId().equals(id)) {
 				found = current;
+				keep = false;
 			}
 			else if(current.getId().compareTo(id) > 0){
 				current = current.getLeft();

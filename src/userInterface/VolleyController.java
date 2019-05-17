@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import model.Spectator;
@@ -85,6 +86,10 @@ public class VolleyController {
 	private String fileName;
 	
 	private Spectator s;
+	
+	private long before;
+	private long after;
+
 
 	private FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV","csv");
 	
@@ -100,6 +105,9 @@ public class VolleyController {
 		fileMessage.setText("");
 		participantMessage.setText("");
 		spectatorMessage.setText("");
+		vc = new VolleyballCup();
+		spectatorTime.setText("");
+		participantTime.setText("");
 	}
 	
 	
@@ -131,19 +139,23 @@ public class VolleyController {
 	
 	public void searchSpectator(ActionEvent event) {
 		String idSpec = spectatorId.getText();
-		
+		before = System.currentTimeMillis();
 		if(vc.searchSpectator(idSpec) != null) {
 			s = vc.searchSpectator(idSpec);
-			id.setText(s.getId());
-			firstName.setText(s.getFirstName());
-			lastName.setText(s.getLastName());
-			email.setText(s.getEmail());
-			gender.setText(s.getGender());
-			country.setText(s.getCountry());
-			birthday.setText(s.getBirthday());
+			id.setText("Id:	"+s.getId());
+			firstName.setText("First Name:	"+s.getFirstName());
+			lastName.setText("Last Name:	"+s.getLastName());
+			email.setText("Email:	"+s.getEmail());
+			gender.setText("Gender:	"+s.getGender());
+			country.setText("Country:	"+s.getCountry());
+			birthday.setText("BirthDay:	"+s.getBirthday());
+			Image image = new Image(s.getPhoto());
+			photo.setImage(image);
 		}
 		else {
 			spectatorMessage.setText("No spectator found with that Id");
 		}
+		after = System.currentTimeMillis();
+		spectatorTime.setText("Time: " + ((after-before)/1000) + "s");
 	}
 }

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1525.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="userInterface.VolleyController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="914.0" prefWidth="1727.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.VolleyController">
   <tabs>
     <Tab text="Tab 1">
          <content>
@@ -62,38 +62,38 @@
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="photo" fitHeight="393.0" fitWidth="522.0" layoutX="809.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="firstName" layoutX="982.0" layoutY="494.0" prefHeight="32.0" prefWidth="109.0" text="first name">
+                  <ImageView fx:id="photo" fitHeight="393.0" fitWidth="616.0" layoutX="891.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="firstName" layoutX="982.0" layoutY="494.0" prefHeight="32.0" prefWidth="499.0" text="first name">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="id" layoutX="985.0" layoutY="446.0" prefHeight="32.0" prefWidth="109.0" text="id">
+                  <Label fx:id="id" layoutX="985.0" layoutY="448.0" prefHeight="32.0" prefWidth="498.0" text="id">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lastName" layoutX="984.0" layoutY="544.0" prefHeight="32.0" prefWidth="109.0" text="last name">
+                  <Label fx:id="lastName" layoutX="984.0" layoutY="544.0" prefHeight="32.0" prefWidth="521.0" text="last name">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="email" layoutX="987.0" layoutY="587.0" prefHeight="32.0" prefWidth="109.0" text="email">
+                  <Label fx:id="email" layoutX="987.0" layoutY="587.0" prefHeight="32.0" prefWidth="531.0" text="email">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gender" layoutX="988.0" layoutY="625.0" prefHeight="32.0" prefWidth="109.0" text="gender">
+                  <Label fx:id="gender" layoutX="988.0" layoutY="625.0" prefHeight="32.0" prefWidth="532.0" text="gender">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="country" layoutX="990.0" layoutY="667.0" prefHeight="32.0" prefWidth="109.0" text="country">
+                  <Label fx:id="country" layoutX="990.0" layoutY="667.0" prefHeight="32.0" prefWidth="527.0" text="country">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="birthday" layoutX="992.0" layoutY="704.0" prefHeight="32.0" prefWidth="109.0" text="birthday">
+                  <Label fx:id="birthday" layoutX="992.0" layoutY="704.0" prefHeight="32.0" prefWidth="528.0" text="birthday">
                      <font>
                         <Font size="22.0" />
                      </font>
