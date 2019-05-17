@@ -107,6 +107,9 @@
             </Pane>
          </content>
     </Tab>
-    <Tab text="Tab 2" />
+    <Tab text="Tab 2">
+         <content>
+            <Pane fx:id="Canvas" prefHeight="200.0" prefWidth="200.0" />
+         </content></Tab>
   </tabs>
 </TabPane>
