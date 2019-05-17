@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import model.Participant;
 import model.Spectator;
@@ -91,7 +92,16 @@ public class VolleyController {
 	private Pane pane;
 	
 	@FXML
-    private Pane Canvas;
+    private BorderPane Canvas;
+	
+	@FXML
+	private Button BtOpciones;
+
+    @FXML
+    private Button BtParticipantes;
+
+	@FXML
+	private Button BtEspectadores;
 
 	
 	private String fileName;
@@ -121,7 +131,7 @@ public class VolleyController {
 		spectatorTime.setText("");
 		participantTime.setText("");
 		info.setText("");
-		Canvas = new Pane();
+		Canvas = new BorderPane();
 	}
 	
 	
