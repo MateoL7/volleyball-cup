@@ -9,10 +9,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import model.Participant;
 import model.Spectator;
@@ -88,6 +90,10 @@ public class VolleyController {
 	@FXML
 	private Pane pane;
 	
+	@FXML
+    private Pane Canvas;
+
+	
 	private String fileName;
 	
 	private Spectator s;
@@ -115,6 +121,7 @@ public class VolleyController {
 		spectatorTime.setText("");
 		participantTime.setText("");
 		info.setText("");
+		Canvas = new Pane();
 	}
 	
 	
@@ -191,5 +198,10 @@ public class VolleyController {
 		}
 		after = System.currentTimeMillis();
 		participantTime.setText("Time: " + ((after-before)/1000) + "s");
+	}
+	
+	public void ShowImageCanvas(MouseEvent e) {
+		
+		
 	}
 }

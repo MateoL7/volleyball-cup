@@ -22,6 +22,7 @@ public class Spectator implements Comparable<Spectator> {
 		this.country = country;
 		this.photo = photo;
 		this.birthday = birthday;
+		this.gender = gender;
 	}
 
 	/**
