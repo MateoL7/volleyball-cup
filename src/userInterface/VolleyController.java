@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -53,6 +54,9 @@ public class VolleyController {
 
 	@FXML
 	private Label participantTime;
+	
+	@FXML
+    private Label info;
 
 	@FXML
 	private Label spectatorTime;
@@ -110,6 +114,7 @@ public class VolleyController {
 		vc = new VolleyballCup();
 		spectatorTime.setText("");
 		participantTime.setText("");
+		info.setText("");
 	}
 	
 	
@@ -144,8 +149,9 @@ public class VolleyController {
 	public void searchSpectator(ActionEvent event) {
 		String idSpec = spectatorId.getText();
 		before = System.currentTimeMillis();
-		if(vc.searchSpectator(idSpec) != null) {
-			s = vc.searchSpectator(idSpec);
+		if(vc.searchingSpectator(idSpec) != null) {
+			s = vc.searchingSpectator(idSpec);
+			info.setText("Spectator");
 			id.setText("Id:	"+s.getId());
 			firstName.setText("First Name:	"+s.getFirstName());
 			lastName.setText("Last Name:	"+s.getLastName());
@@ -166,8 +172,9 @@ public class VolleyController {
 	public void searchParticipant(ActionEvent event) {
 		String idPar = participantId.getText();
 		before = System.currentTimeMillis();
-		if(vc.searchParticipant(idPar) != null) {
-			p = vc.searchParticipant(idPar);
+		if(vc.searchingParticipant(idPar) != null) {
+			p = vc.searchingParticipant(idPar);
+			info.setText("Participant");
 			id.setText("Id:	"+p.getId());
 			firstName.setText("First Name:	"+p.getFirstName());
 			lastName.setText("Last Name:	"+p.getLastName());

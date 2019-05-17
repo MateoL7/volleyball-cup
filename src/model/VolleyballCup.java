@@ -69,7 +69,7 @@ public class VolleyballCup {
 		}
 	}
 
-	public Spectator searchSpectator(String id) {
+	public Spectator searchingSpectator(String id) {
 		Spectator found = null;
 		Spectator current = root;
 		boolean keep = true;
@@ -107,7 +107,7 @@ public class VolleyballCup {
 			first.setPrev(p);
 		}
 	}
-	public Participant searchParticipant(String id) {
+	public Participant searchingParticipant(String id) {
 		Participant found = null;
 		Participant current = first;
 		boolean keep = true;
