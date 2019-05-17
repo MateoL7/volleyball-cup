@@ -138,6 +138,7 @@ public class VolleyController {
 			fileMessage.setText("There was a problem with loading\nthe file");
 			np.printStackTrace();
 		}
+		vc.createCountryList("China");
 	}
 	
 	public void searchSpectator(ActionEvent event) {

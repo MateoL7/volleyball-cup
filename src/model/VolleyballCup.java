@@ -29,6 +29,7 @@ public class VolleyballCup {
 				addSpectator(id, fn, ln, em, gn, cn, ph, bd);
 				if(counter%2 == 0) {
 					addParticipant(id, fn, ln, em, gn, cn, ph, bd);
+				
 				}
 				counter++;
 			}
@@ -120,4 +121,45 @@ public class VolleyballCup {
 		}
 		return found;
 	}
+	
+   public Participant createCountryList(String country) {
+	   Participant temp = first;
+	   Participant newFirst = null;
+	   while(temp.getNext() != first) {
+		
+		   if(temp.getCountry().equals(country)) {
+			Participant p = new Participant(temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getEmail(), temp.getGender(), temp.getCountry(), temp.getPhoto(), temp.getBirthday());
+
+			if(newFirst != null) {
+
+				Participant last = newFirst.getPrev();
+
+				last.setNext(p);
+				newFirst.setPrev(p);;
+				p.setNext(newFirst);
+				p.setPrev(last);
+
+
+			}
+			else {
+				newFirst = p;
+				newFirst.setNext(p);
+				newFirst.setPrev(p);
+			}
+			
+		   }
+		   temp = temp.getNext();
+	  
+	  }
+	/**   
+	 * este codigo era para comprobar que funciona la creacion de la lista
+	 * Este metodo se activa en el metodo loadFile de volleyController
+	   Participant temp1 = newFirst;
+	   while(temp1.getNext() != newFirst) {
+		   System.out.println(temp1.getFirstName());
+		   temp1 = temp1.getNext();
+	   }
+	  */
+	   return newFirst;
+   }
 }
