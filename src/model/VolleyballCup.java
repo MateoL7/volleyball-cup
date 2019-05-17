@@ -16,7 +16,7 @@ public class VolleyballCup {
 		String line = br.readLine();
 		int counter = 0;
 		while(line != null) {
-			if(line.charAt(0) != '#') {
+			if(line.charAt(0) != '#' && line.charAt(0) != 'i') {
 				String[] info = line.split(",");
 				String id = info[0];
 				String fn = info[1];
