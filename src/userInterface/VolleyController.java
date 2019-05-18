@@ -153,6 +153,8 @@ public class VolleyController {
 		try {
 			vc.loadInfo(fileName);
 			fileMessage.setText("The file has been loaded succesfully");
+			vc.createCountryList("China");
+			vc.createSpectatorTree("China", fileName);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
@@ -160,7 +162,7 @@ public class VolleyController {
 			fileMessage.setText("There was a problem with loading\nthe file");
 			np.printStackTrace();
 		}
-		vc.createCountryList("China");
+	
 	}
 	
 	public void searchSpectator(ActionEvent event) {

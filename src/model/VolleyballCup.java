@@ -162,4 +162,62 @@ public class VolleyballCup {
 	  */
 	   return newFirst;
    }
+   
+   /**
+    * Este metodo sirve para crear un arbol binario de un pais en especifico 
+    * y por ahora se activa en el metodod loadFile de volleyController
+    * no he tocado nada mas :)
+    */
+   public Spectator createSpectatorTree(String country, String path) throws IOException {
+	   Spectator newTree = null;
+	   BufferedReader br = new BufferedReader(new FileReader(new File(path)));
+		String line = br.readLine();
+		while(line != null) {
+			if(line.charAt(0) != '#' && line.charAt(0) != 'i') {
+				String[] info = line.split(",");
+				String id = info[0];
+				String fn = info[1];
+				String ln = info[2];
+				String em = info[3];
+				String gn = info[4];
+				String cn = info[5];
+				String ph = info[6];
+				String bd = info[7];
+				if(cn.equals(country)) {
+				Spectator p = new Spectator(id, fn, ln, em, gn, cn, ph, bd);
+				if(newTree == null) {
+					newTree = p;
+				}else {
+					Spectator current = newTree;
+					boolean added = false;
+					while(added == false) {
+						if(p.compareTo(current) > 0) {
+							if(current.getRight() == null) {
+								current.setRight(p);
+								System.out.println(p);
+								added = true;
+							}else {
+								current = current.getRight();
+							}
+						}
+						else {
+							if(current.getLeft() == null) {
+								current.setLeft(p);
+								System.out.println(p);
+								added = true;
+							}else {
+								current = current.getLeft();
+							}
+						}
+					}
+				}
+				}
+			}
+			line = br.readLine();
+		}
+		br.close();
+	   return newTree;
+   }
+   
+   
 }
