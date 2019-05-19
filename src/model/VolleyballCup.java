@@ -29,14 +29,13 @@ public class VolleyballCup {
 				addSpectator(id, fn, ln, em, gn, cn, ph, bd);
 				if(counter%2 == 0) {
 					addParticipant(id, fn, ln, em, gn, cn, ph, bd);
-				
+
 				}
 				counter++;
 			}
 
 			line = br.readLine();
 		}
-		System.out.println(root.getId());
 		br.close();
 	}
 
@@ -121,56 +120,56 @@ public class VolleyballCup {
 		}
 		return found;
 	}
-	
-   public Participant createCountryList(String country) {
-	   Participant temp = first;
-	   Participant newFirst = null;
-	   while(temp.getNext() != first) {
-		
-		   if(temp.getCountry().equals(country)) {
-			Participant p = new Participant(temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getEmail(), temp.getGender(), temp.getCountry(), temp.getPhoto(), temp.getBirthday());
 
-			if(newFirst != null) {
+	public Participant createCountryList(String country) {
+		Participant temp = first;
+		Participant newFirst = null;
+		while(temp.getNext() != first) {
 
-				Participant last = newFirst.getPrev();
+			if(temp.getCountry().equals(country)) {
+				Participant p = new Participant(temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getEmail(), temp.getGender(), temp.getCountry(), temp.getPhoto(), temp.getBirthday());
 
-				last.setNext(p);
-				newFirst.setPrev(p);;
-				p.setNext(newFirst);
-				p.setPrev(last);
+				if(newFirst != null) {
 
+					Participant last = newFirst.getPrev();
+
+					last.setNext(p);
+					newFirst.setPrev(p);;
+					p.setNext(newFirst);
+					p.setPrev(last);
+
+
+				}
+				else {
+					newFirst = p;
+					newFirst.setNext(p);
+					newFirst.setPrev(p);
+				}
 
 			}
-			else {
-				newFirst = p;
-				newFirst.setNext(p);
-				newFirst.setPrev(p);
-			}
-			
-		   }
-		   temp = temp.getNext();
-	  
-	  }
-	/**   
-	 * este codigo era para comprobar que funciona la creacion de la lista
-	 * Este metodo se activa en el metodo loadFile de volleyController
+			temp = temp.getNext();
+
+		}
+		/**   
+		 * este codigo era para comprobar que funciona la creacion de la lista
+		 * Este metodo se activa en el metodo loadFile de volleyController
 	   Participant temp1 = newFirst;
 	   while(temp1.getNext() != newFirst) {
 		   System.out.println(temp1.getFirstName());
 		   temp1 = temp1.getNext();
 	   }
-	  */
-	   return newFirst;
-   }
-   
-   /**
-    * Este metodo sirve para crear un arbol binario de un pais en especifico 
-    * y por ahora se activa en el metodod loadFile de volleyController
-    * no he tocado nada mas :)
-    */
-   public Spectator createSpectatorTree(String country, String path) throws IOException {
-	   Spectator newTree = null;
-	   BufferedReader br = new BufferedReader(new FileReader(new File(path)));
+		 */
+		return newFirst;
+	}
+
+	/**
+	 * Este metodo sirve para crear un arbol binario de un pais en especifico 
+	 * y por ahora se activa en el metodod loadFile de volleyController
+	 * no he tocado nada mas :)
+	 */
+	public Spectator createSpectatorTree(String country, String path) throws IOException {
+		Spectator newTree = null;
+		BufferedReader br = new BufferedReader(new FileReader(new File(path)));
 		String line = br.readLine();
 		while(line != null) {
 			if(line.charAt(0) != '#' && line.charAt(0) != 'i') {
@@ -184,40 +183,38 @@ public class VolleyballCup {
 				String ph = info[6];
 				String bd = info[7];
 				if(cn.equals(country)) {
-				Spectator p = new Spectator(id, fn, ln, em, gn, cn, ph, bd);
-				if(newTree == null) {
-					newTree = p;
-				}else {
-					Spectator current = newTree;
-					boolean added = false;
-					while(added == false) {
-						if(p.compareTo(current) > 0) {
-							if(current.getRight() == null) {
-								current.setRight(p);
-								System.out.println(p);
-								added = true;
-							}else {
-								current = current.getRight();
+					Spectator p = new Spectator(id, fn, ln, em, gn, cn, ph, bd);
+					if(newTree == null) {
+						newTree = p;
+					}else {
+						Spectator current = newTree;
+						boolean added = false;
+						while(added == false) {
+							if(p.compareTo(current) > 0) {
+								if(current.getRight() == null) {
+									current.setRight(p);
+									added = true;
+								}else {
+									current = current.getRight();
+								}
 							}
-						}
-						else {
-							if(current.getLeft() == null) {
-								current.setLeft(p);
-								System.out.println(p);
-								added = true;
-							}else {
-								current = current.getLeft();
+							else {
+								if(current.getLeft() == null) {
+									current.setLeft(p);
+									added = true;
+								}else {
+									current = current.getLeft();
+								}
 							}
 						}
 					}
-				}
 				}
 			}
 			line = br.readLine();
 		}
 		br.close();
-	   return newTree;
-   }
-   
-   
+		return newTree;
+	}
+
+
 }
