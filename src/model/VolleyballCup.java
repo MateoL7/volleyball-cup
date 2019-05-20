@@ -10,6 +10,13 @@ public class VolleyballCup {
 	public VolleyballCup() {
 
 	}
+	
+	public Participant getFirst() {
+		return first;
+	}
+	public void setFirst(Participant p) {
+		first = p;
+	}
 
 	public void loadInfo(String path) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(new File(path)));
@@ -46,7 +53,7 @@ public class VolleyballCup {
 		}else {
 			Spectator current = root;
 			boolean added = false;
-			while(added == false) {
+			while(!added) {
 				if(p.compareTo(current) > 0) {
 					if(current.getRight() == null) {
 						current.setRight(p);
@@ -110,13 +117,15 @@ public class VolleyballCup {
 		Participant found = null;
 		Participant current = first;
 		boolean keep = true;
-		while(current.getNext() != first && keep) {
-			if(current.getId().equals(id)) {
-				found = current;
-				keep = false;
-			}
+		if(first != null) {
+			while(current.getNext() != first && keep) {
+				if(current.getId().equals(id)) {
+					found = current;
+					keep = false;
+				}
 
-			current = current.getNext();
+				current = current.getNext();
+			}
 		}
 		return found;
 	}

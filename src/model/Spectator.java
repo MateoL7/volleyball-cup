@@ -168,9 +168,9 @@ public class Spectator implements Comparable<Spectator> {
 
 	@Override
 	public int compareTo(Spectator o) {
-		if(this.id.compareTo(o.getId()) > 0) {
+		if(id.compareTo(o.getId()) > 0) {
 			return 1;
-		}else if(this.id.compareTo(o.getId()) < 0) {
+		}else if(id.compareTo(o.getId()) < 0) {
 			return -1;
 		}else {
 			return 0;
