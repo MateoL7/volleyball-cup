@@ -97,15 +97,6 @@ public class VolleyController {
 	private BorderPane Canvas;
 
 	@FXML
-	private Button BtOpciones;
-
-	@FXML
-	private Button BtParticipantes;
-
-	@FXML
-	private Button BtEspectadores;
-
-	@FXML
 	private Pane mateo;
 
 
@@ -118,6 +109,7 @@ public class VolleyController {
 	private long after;
 
 	private Participant countryList;
+	private Spectator newSpectator;
 
 
 	private FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV","csv");
@@ -222,7 +214,7 @@ public class VolleyController {
 		try {
 			String country = JOptionPane.showInputDialog(null, "Which country would you like to see?");
 			countryList =	vc.createCountryList(country);
-			vc.createSpectatorTree(country, fileName);
+			newSpectator = vc.createSpectatorTree(country, fileName);
 			countrySelected.setText("COUNTRY: " + country.toUpperCase());
 		}catch (NumberFormatException nf) {
 			JOptionPane.showMessageDialog(null, "Not valid");
@@ -264,5 +256,18 @@ public class VolleyController {
 		line4.setStrokeWidth(3);
 		mateo.getChildren().add(line3);
 		mateo.getChildren().add(line4);
+	}
+	public void showSpectators(ActionEvent ae) {
+		Spectator temp = newSpectator;
+		System.out.println(temp);
+		//if(temp != null) {
+			Image i = new Image(temp.getPhoto());
+			ImageView v = new ImageView(i);
+			v.setFitHeight(100);
+			v.setFitWidth(100);
+			v.setLayoutX(717);
+			v.setLayoutY(6);
+			mateo.getChildren().add(v);
+		///}
 	}
 }

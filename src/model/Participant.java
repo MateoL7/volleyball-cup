@@ -165,17 +165,17 @@ public class Participant {
 		this.birthday = birthday;
 	}
 	
-	@Override
-	public String toString() {
-		String msg = 
-		"Id:	" + id+
-		"\nFirst Name:	" + firstName+
-		"\nLast Name:	" + lastName+
-		"\nEmail:	" + email+
-		"\nGender:	" + gender+
-		"\nCountry:	" + country+
-		"\nBirthday:	" + birthday;
-		return msg;
-		
-	}
+//	@Override
+//	public String toString() {
+//		String msg = 
+//		"Id:	" + id+
+//		"\nFirst Name:	" + firstName+
+//		"\nLast Name:	" + lastName+
+//		"\nEmail:	" + email+
+//		"\nGender:	" + gender+
+//		"\nCountry:	" + country+
+//		"\nBirthday:	" + birthday;
+//		return msg;
+//		
+//	}
 }

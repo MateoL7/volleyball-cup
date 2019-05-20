@@ -28,9 +28,7 @@ public class ParticipantTest {
 		birthday = "14/12/2007";
 		gender = "Male";
 	}
-	private void setupScenary2() {
-		Participant p = new Participant(id, firstName, lastName, email, gender, country, photo, birthday);
-	}
+
 	
 	@Test
 	public void testParticipant() {
