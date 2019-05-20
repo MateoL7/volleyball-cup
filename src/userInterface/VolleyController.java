@@ -3,6 +3,7 @@ package userInterface;
 import java.io.IOException;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import javafx.event.ActionEvent;
@@ -12,9 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Line;
 import model.Participant;
 import model.Spectator;
 import model.VolleyballCup;
@@ -25,6 +26,9 @@ public class VolleyController {
 
 	@FXML
 	private TextField fileDestination;
+	
+	@FXML
+    private Label countrySelected;
 
 	@FXML
 	private Button explore;
@@ -55,9 +59,9 @@ public class VolleyController {
 
 	@FXML
 	private Label participantTime;
-	
+
 	@FXML
-    private Label info;
+	private Label info;
 
 	@FXML
 	private Label spectatorTime;
@@ -88,31 +92,36 @@ public class VolleyController {
 
 	@FXML
 	private Pane pane;
-	
+
 	@FXML
-    private BorderPane Canvas;
-	
+	private BorderPane Canvas;
+
 	@FXML
 	private Button BtOpciones;
 
-    @FXML
-    private Button BtParticipantes;
+	@FXML
+	private Button BtParticipantes;
 
 	@FXML
 	private Button BtEspectadores;
 
-	
+	@FXML
+	private Pane mateo;
+
+
 	private String fileName;
-	
+
 	private Spectator s;
 	private Participant p;
-	
+
 	private long before;
 	private long after;
 
+	private Participant countryList;
+
 
 	private FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV","csv");
-	
+
 	@FXML
 	public void initialize() {
 		id.setText("");
@@ -131,8 +140,8 @@ public class VolleyController {
 		info.setText("");
 		Canvas = new BorderPane();
 	}
-	
-	
+
+
 	public void exploreFile(ActionEvent event)  {
 
 		JFileChooser fc = new JFileChooser();
@@ -142,11 +151,11 @@ public class VolleyController {
 		if(seleccion==JFileChooser.APPROVE_OPTION){
 
 			fileName = fc.getSelectedFile().getPath();
-			
+
 			fileDestination.setText(fc.getSelectedFile().toString());
 		} 
 	}
-	
+
 	public void loadFile(ActionEvent event) {
 		try {
 			vc.loadInfo(fileName);
@@ -154,15 +163,14 @@ public class VolleyController {
 			vc.createCountryList("China");
 			vc.createSpectatorTree("China", fileName);
 		} catch (IOException e) {
-			e.printStackTrace();
+			fileMessage.setText("There was a problem with loading\nthe file");
 		} 
 		catch(NullPointerException np) {
 			fileMessage.setText("There was a problem with loading\nthe file");
-			np.printStackTrace();
 		}
-	
+
 	}
-	
+
 	public void searchSpectator(ActionEvent event) {
 		String idSpec = spectatorId.getText();
 		before = System.currentTimeMillis();
@@ -209,9 +217,52 @@ public class VolleyController {
 		after = System.currentTimeMillis();
 		participantTime.setText("Time: " + ((after-before)/1000) + "s");
 	}
-	
-	public void ShowImageCanvas(MouseEvent e) {
-		
-		
+
+	public void loadCountry(ActionEvent e) {
+		try {
+			String country = JOptionPane.showInputDialog(null, "Which country would you like to see?");
+			countryList =	vc.createCountryList(country);
+			vc.createSpectatorTree(country, fileName);
+			countrySelected.setText("COUNTRY: " + country.toUpperCase());
+		}catch (NumberFormatException nf) {
+			JOptionPane.showMessageDialog(null, "Not valid");
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+	public void showParticipants(ActionEvent a) {
+		Participant temp = countryList;
+		double counterx = 87;
+		double countery = 257;
+		int count = 0;
+		while(temp.getNext() != vc.getFirst() && count <= 8) {
+			double startx = counterx + 100;
+			double distance = startx + 100;
+			double starty = countery + 30;
+			double starty2 = countery + 90;
+			Image i = new Image(temp.getPhoto());
+			ImageView v = new ImageView(i);
+			v.setFitHeight(100);
+			v.setFitWidth(100);
+			v.setLayoutX(counterx);
+			v.setLayoutY(countery);
+			Line l = new Line(startx,starty,distance,starty);
+			l.setStrokeWidth(3);
+			Line l2 = new Line(startx,starty2,distance,starty2);
+			l2.setStrokeWidth(3);
+			mateo.getChildren().add(v);
+			mateo.getChildren().add(l);
+			mateo.getChildren().add(l2);
+			temp = temp.getNext();
+			count++;
+			counterx = startx + distance - counterx - 100;
+		}
+		Line line3 = new Line(0, 287, 80, 287);
+		line3.setStrokeWidth(3);
+		Line line4 = new Line(0, (257+90), 80, (257+90));
+		line4.setStrokeWidth(3);
+		mateo.getChildren().add(line3);
+		mateo.getChildren().add(line4);
 	}
 }

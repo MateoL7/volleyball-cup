@@ -135,7 +135,7 @@ public class VolleyballCup {
 		Participant newFirst = null;
 		while(temp.getNext() != first) {
 
-			if(temp.getCountry().equals(country)) {
+			if(temp.getCountry().equalsIgnoreCase(country)) {
 				Participant p = new Participant(temp.getId(), temp.getFirstName(), temp.getLastName(), temp.getEmail(), temp.getGender(), temp.getCountry(), temp.getPhoto(), temp.getBirthday());
 
 				if(newFirst != null) {
