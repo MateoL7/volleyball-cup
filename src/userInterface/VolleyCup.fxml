@@ -14,8 +14,9 @@
   <tabs>
     <Tab text="Tab 1">
          <content>
-            <Pane fx:id="pane" prefHeight="400.0" prefWidth="600.0">
+            <Pane fx:id="pane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightblue;">
                <children>
+                  <Pane layoutX="746.0" layoutY="77.0" prefHeight="709.0" prefWidth="674.0" style="-fx-border-color: Black;" />
                   <TextField fx:id="fileDestination" layoutX="55.0" layoutY="193.0" prefHeight="35.0" prefWidth="292.0" />
                   <Button fx:id="explore" layoutX="369.0" layoutY="195.0" mnemonicParsing="false" onAction="#exploreFile" prefHeight="18.0" prefWidth="116.0" text="Explore" />
                   <Button fx:id="load" layoutX="499.0" layoutY="194.0" mnemonicParsing="false" onAction="#loadFile" prefHeight="26.0" prefWidth="101.0" text="Load" />
@@ -79,22 +80,22 @@
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="email" layoutX="987.0" layoutY="607.0" prefHeight="32.0" prefWidth="531.0" text="email">
+                  <Label fx:id="email" layoutX="983.0" layoutY="607.0" prefHeight="32.0" prefWidth="531.0" text="email">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gender" layoutX="988.0" layoutY="645.0" prefHeight="32.0" prefWidth="532.0" text="gender">
+                  <Label fx:id="gender" layoutX="983.0" layoutY="646.0" prefHeight="32.0" prefWidth="532.0" text="gender">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="country" layoutX="990.0" layoutY="687.0" prefHeight="32.0" prefWidth="527.0" text="country">
+                  <Label fx:id="country" layoutX="984.0" layoutY="688.0" prefHeight="32.0" prefWidth="527.0" text="country">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="birthday" layoutX="992.0" layoutY="724.0" prefHeight="32.0" prefWidth="528.0" text="birthday">
+                  <Label fx:id="birthday" layoutX="985.0" layoutY="725.0" prefHeight="32.0" prefWidth="528.0" text="birthday">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -102,6 +103,11 @@
                   <Label fx:id="info" layoutX="969.0" layoutY="-2.0" prefHeight="89.0" prefWidth="821.0" text="INFORMATION">
                      <font>
                         <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="66.0" layoutY="-2.0" prefHeight="118.0" prefWidth="390.0" text="VOLLEYBALL CUP 2019" textFill="#0b0b0b">
+                     <font>
+                        <Font size="22.0" />
                      </font>
                   </Label>
                </children>
@@ -112,12 +118,12 @@
          <content>
             <BorderPane fx:id="Canvas" prefHeight="200.0" prefWidth="200.0">
                <bottom>
-                  <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: Black;" BorderPane.alignment="CENTER">
                      <children>
-                        <Button layoutX="137.0" layoutY="52.0" mnemonicParsing="false" onAction="#loadCountry" prefHeight="65.0" prefWidth="198.0" text="Choose" />
+                        <Button layoutX="137.0" layoutY="52.0" mnemonicParsing="false" onAction="#loadCountry" prefHeight="65.0" prefWidth="198.0" text="Options" />
                         <Button layoutX="472.0" layoutY="56.0" mnemonicParsing="false" onAction="#showParticipants" prefHeight="66.0" prefWidth="188.0" text="Participants" />
                         <Button layoutX="829.0" layoutY="52.0" mnemonicParsing="false" onAction="#showSpectators" prefHeight="65.0" prefWidth="173.0" text="Spectators" />
-                        <Label fx:id="countrySelected" layoutX="1177.0" layoutY="-3.0" prefHeight="204.0" prefWidth="548.0" style="-fx-background-color: BLACk;" textFill="WHITE">
+                        <Label fx:id="countrySelected" layoutX="1177.0" layoutY="3.0" prefHeight="198.0" prefWidth="548.0" style="-fx-background-color: BLACk;" textFill="WHITE">
                            <font>
                               <Font size="39.0" />
                            </font>

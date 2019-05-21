@@ -132,7 +132,7 @@ public class VolleyController {
 		vc = new VolleyballCup();
 		spectatorTime.setText("");
 		participantTime.setText("");
-		info.setText("");
+		//info.setText("");
 		Canvas = new BorderPane();
 	}
 
@@ -171,7 +171,7 @@ public class VolleyController {
 		before = System.currentTimeMillis();
 		if(vc.searchingSpectator(idSpec) != null) {
 			s = vc.searchingSpectator(idSpec);
-			info.setText("Spectator");
+			info.setText("Spectator".toUpperCase());
 			id.setText("Id:	"+s.getId());
 			firstName.setText("First Name:	"+s.getFirstName());
 			lastName.setText("Last Name:	"+s.getLastName());
@@ -185,6 +185,7 @@ public class VolleyController {
 		}
 		else {
 			spectatorMessage.setText("No spectator found with the id: " + idSpec);
+			JOptionPane.showMessageDialog(null, "Please type another id");
 		}
 		after = System.currentTimeMillis();
 		spectatorTime.setText("Time: " + ((after-before)/1000) + "s");
@@ -194,7 +195,7 @@ public class VolleyController {
 		before = System.currentTimeMillis();
 		if(vc.searchingParticipant(idPar) != null) {
 			p = vc.searchingParticipant(idPar);
-			info.setText("Participant");
+			info.setText("Participant".toUpperCase());
 			id.setText("Id:	"+p.getId());
 			firstName.setText("First Name:	"+p.getFirstName());
 			lastName.setText("Last Name:	"+p.getLastName());
@@ -208,6 +209,7 @@ public class VolleyController {
 		}
 		else {
 			participantMessage.setText("No participant found with the id: " + idPar);
+			JOptionPane.showMessageDialog(null, "Please type another id");
 		}
 		after = System.currentTimeMillis();
 		participantTime.setText("Time: " + ((after-before)/1000) + "s");
@@ -277,24 +279,82 @@ public class VolleyController {
 	public void showSpectators(ActionEvent ae) {
 		mateo.getChildren().clear();
 		informative.setText("SPECTATORS");
+		int count = 0;
 		try {
 			Spectator temp = newSpectator;
-			System.out.println(temp);
-			//if(temp != null) {
-				Image i = new Image(temp.getPhoto());
-				ImageView v = new ImageView(i);
-				v.setFitHeight(100);
-				v.setFitWidth(100);
-				v.setLayoutX(717);
-				v.setLayoutY(6);
-				
-				Label lbInfo = new Label("Name: " + temp.getFirstName() + "\nId: " + temp.getId() + "\nGender: " + temp.getGender());
-				lbInfo.setLayoutX(717);
-				lbInfo.setLayoutY(6 + 100);
-				
-				mateo.getChildren().add(lbInfo);
-				mateo.getChildren().add(v);
-		//}
+			double counterx = 720;
+			double countery = 6;
+			double left = 100;
+			double right = 100;
+			double downR = 150;
+			double downL = 150;
+			
+			
+			Image i1 = new Image(temp.getPhoto());
+			ImageView v1 = new ImageView(i1);
+			v1.setFitHeight(100);
+			v1.setFitWidth(100);
+			v1.setLayoutX(counterx);
+			v1.setLayoutY(countery);
+			
+			Label lbInfo = new Label("Name: " + temp.getFirstName() + "\nId: " + temp.getId() + "\nGender: " + temp.getGender());
+			lbInfo.setLayoutX(counterx);
+			lbInfo.setLayoutY(countery + 100);
+			
+			mateo.getChildren().add(lbInfo);
+			mateo.getChildren().add(v1);
+			
+			while((temp.getRight() != null || temp.getLeft() != null) && count <= 7) {
+				if(temp.getRight() != null) {
+					Spectator rightS = temp.getRight();
+					Image i = new Image(rightS.getPhoto());
+					ImageView v = new ImageView(i);
+					v.setFitHeight(100);
+					v.setFitWidth(100);
+					double actualx = counterx + right;
+					double actualy = countery + downR;
+					v.setLayoutX(actualx);
+					v.setLayoutY(actualy);
+					
+					Label lbInfo2 = new Label("Name: " + rightS.getFirstName() + "\nId: " + rightS.getId() + "\nGender: " + rightS.getGender());
+					lbInfo2.setLayoutX(actualx);
+					lbInfo2.setLayoutY(actualy+ 100);
+					
+					mateo.getChildren().add(lbInfo2);
+					mateo.getChildren().add(v);
+					
+					right += 100;
+					downR += 100;
+					
+					temp = temp.getRight();
+					count++;
+				}
+				if(temp.getRight() != null) {
+					Spectator leftS = temp.getRight();
+					Image i = new Image(leftS.getPhoto());
+					ImageView v = new ImageView(i);
+					v.setFitHeight(100);
+					v.setFitWidth(100);
+					double actualx = counterx - left;
+					double actualy = countery + downL;
+					v.setLayoutX(actualx);
+					v.setLayoutY(actualy);
+					
+					Label lbInfo2 = new Label("Name: " + leftS.getFirstName() + "\nId: " + leftS.getId() + "\nGender: " + leftS.getGender());
+					lbInfo2.setLayoutX(actualx);
+					lbInfo2.setLayoutY(actualy + 100);
+					
+					mateo.getChildren().add(lbInfo2);
+					mateo.getChildren().add(v);
+					
+					left += 100;
+					downL += 100;
+					
+					temp = temp.getLeft();
+					count++;
+				}
+			
+		}
 		} catch(NullPointerException e) {
 			System.out.println("Null pointer");
 		}

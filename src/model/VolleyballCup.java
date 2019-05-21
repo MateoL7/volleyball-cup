@@ -208,7 +208,7 @@ public class VolleyballCup {
 					}else {
 						Spectator current = newTree;
 						boolean added = false;
-						while(added == false) {
+						while(!added) {
 							if(p.compareTo(current) > 0) {
 								if(current.getRight() == null) {
 									current.setRight(p);
