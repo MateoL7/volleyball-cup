@@ -140,7 +140,9 @@ public class VolleyballCup {
 		}
 		return found;
 	}
-
+	/**
+	 * This method creates a doubly circular linked list for an specific country
+	 */
 	public Participant createCountryList(String country) {
 		Participant temp = first;
 		Participant newFirst = null;
@@ -170,22 +172,12 @@ public class VolleyballCup {
 			temp = temp.getNext();
 
 		}
-		/**   
-		 * este codigo era para comprobar que funciona la creacion de la lista
-		 * Este metodo se activa en el metodo loadFile de volleyController
-	   Participant temp1 = newFirst;
-	   while(temp1.getNext() != newFirst) {
-		   System.out.println(temp1.getFirstName());
-		   temp1 = temp1.getNext();
-	   }
-		 */
 		return newFirst;
 	}
 
 	/**
-	 * Este metodo sirve para crear un arbol binario de un pais en especifico 
-	 * y por ahora se activa en el metodod loadFile de volleyController
-	 * no he tocado nada mas :)
+	 * This method creates a binary tree for an specific country by loading the file
+	 * with the information
 	 */
 	public Spectator createSpectatorTree(String country, String path) throws IOException {
 		Spectator newTree = null;

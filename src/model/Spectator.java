@@ -164,8 +164,10 @@ public class Spectator implements Comparable<Spectator> {
 	public void setLeft(Spectator left) {
 		this.left = left;
 	}
-
-
+	/**
+	 * This is an Override of the method compareTo
+	 * which helps to compare two different objects
+	 */
 	@Override
 	public int compareTo(Spectator o) {
 		if(id.compareTo(o.getId()) > 0) {
