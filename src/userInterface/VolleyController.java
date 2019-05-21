@@ -143,6 +143,7 @@ public class VolleyController {
 		if(seleccion==JFileChooser.APPROVE_OPTION){
 
 			fileName = fc.getSelectedFile().getPath();
+			System.out.println(fileName);
 
 			fileDestination.setText(fc.getSelectedFile().toString());
 		} 

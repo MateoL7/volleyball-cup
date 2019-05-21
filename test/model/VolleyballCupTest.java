@@ -3,6 +3,8 @@ package model;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
+
 import org.junit.jupiter.api.Test;
 
 public class VolleyballCupTest {
@@ -37,6 +39,7 @@ public class VolleyballCupTest {
 		vc.addSpectator("51-6289987","Sara","Lopez","ediggar1@howstuffworks.com","Female","Colombia",
 		"https://robohash.org/autemnumquamnam.bmp?size=50x50&set=set1","5/10/1996");
 	}
+	
 	@Test
 	public void testAddParticipant() {
 		setupScenary1();
@@ -62,5 +65,19 @@ public class VolleyballCupTest {
 		assertNotNull("It is sending null",  searched);
 		assertTrue("Not the same spectator", searched.getId().equalsIgnoreCase(s.getId()));
 	}
-
+	@Test
+     void testCreateSpecatatorTree() throws IOException {
+		setupScenary1();
+		String country = "China";
+		String filename = "C:\\Users\\Juan Pablo\\Documents\\Laboratorio6\\volleyball-cup\\data\\Files.csv";
+		Spectator s = vc.createSpectatorTree(country, filename);
+		assertTrue("EL objeto esta nulo",s != null);
+	}
+	@Test
+	void testCreateParticipantList() {
+		setupScenary1();
+		String country = "China";
+		Participant p = vc.createCountryList(country);
+		assertTrue("el objeto no esta bien creado",p != null);
 }
+	}
