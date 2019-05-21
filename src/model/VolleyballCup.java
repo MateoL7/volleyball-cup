@@ -201,7 +201,7 @@ public class VolleyballCup {
 				String cn = info[5];
 				String ph = info[6];
 				String bd = info[7];
-				if(cn.equals(country)) {
+				if(cn.equalsIgnoreCase(country)) {
 					Spectator p = new Spectator(id, fn, ln, em, gn, cn, ph, bd);
 					if(newTree == null) {
 						newTree = p;

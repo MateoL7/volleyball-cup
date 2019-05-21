@@ -54,7 +54,9 @@ public class SpectatorTest {
 	public void testCompareTo() {
 		setupScenary1();
 		setupScenary2();
+		Spectator s3 = new Spectator("98-9883409", firstName, lastName, email, gender, country, photo, birthday);
 		assertTrue("Not comparing correctly", s.compareTo(s2) == 0);
+		assertTrue("Not comparing correctly", s.compareTo(s3) < 0);
 		
 	}
 

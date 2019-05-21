@@ -52,6 +52,9 @@ public class VolleyController {
 	private Label fileMessage;
 
 	@FXML
+    private Label informative;
+	
+	@FXML
 	private Label spectatorMessage;
 
 	@FXML
@@ -143,7 +146,6 @@ public class VolleyController {
 		if(seleccion==JFileChooser.APPROVE_OPTION){
 
 			fileName = fc.getSelectedFile().getPath();
-			System.out.println(fileName);
 
 			fileDestination.setText(fc.getSelectedFile().toString());
 		} 
@@ -212,11 +214,16 @@ public class VolleyController {
 	}
 
 	public void loadCountry(ActionEvent e) {
+		mateo.getChildren().clear();
 		try {
 			String country = JOptionPane.showInputDialog(null, "Which country would you like to see?");
 			countryList =	vc.createCountryList(country);
 			newSpectator = vc.createSpectatorTree(country, fileName);
-			countrySelected.setText("COUNTRY: " + country.toUpperCase());
+			if(countryList != null && newSpectator != null) {
+				countrySelected.setText("COUNTRY: " + country.toUpperCase());
+			} else {
+				countrySelected.setText("Not a valid country");
+			}
 		}catch (NumberFormatException nf) {
 			JOptionPane.showMessageDialog(null, "Not valid");
 		} catch (IOException e1) {
@@ -225,10 +232,12 @@ public class VolleyController {
 	}
 
 	public void showParticipants(ActionEvent a) {
+		mateo.getChildren().clear();
 		Participant temp = countryList;
 		double counterx = 87;
 		double countery = 257;
 		int count = 0;
+		informative.setText("PARTICIPANTS");
 		while(temp.getNext() != vc.getFirst() && count <= 8) {
 			double startx = counterx + 100;
 			double distance = startx + 100;
@@ -240,11 +249,18 @@ public class VolleyController {
 			v.setFitWidth(100);
 			v.setLayoutX(counterx);
 			v.setLayoutY(countery);
+			
+			Label lbInfo = new Label("Name: " + temp.getFirstName() + "\nId: " + temp.getId() + "\nGender: " + temp.getGender());
+			lbInfo.setLayoutX(counterx);
+			lbInfo.setLayoutY(countery + 100);
+			
+			
 			Line l = new Line(startx,starty,distance,starty);
 			l.setStrokeWidth(3);
 			Line l2 = new Line(startx,starty2,distance,starty2);
 			l2.setStrokeWidth(3);
 			mateo.getChildren().add(v);
+			mateo.getChildren().add(lbInfo);
 			mateo.getChildren().add(l);
 			mateo.getChildren().add(l2);
 			temp = temp.getNext();
@@ -259,9 +275,11 @@ public class VolleyController {
 		mateo.getChildren().add(line4);
 	}
 	public void showSpectators(ActionEvent ae) {
+		mateo.getChildren().clear();
+		informative.setText("SPECTATORS");
 		try {
 			Spectator temp = newSpectator;
-			--System.out.println(temp);
+			System.out.println(temp);
 			//if(temp != null) {
 				Image i = new Image(temp.getPhoto());
 				ImageView v = new ImageView(i);
@@ -269,6 +287,12 @@ public class VolleyController {
 				v.setFitWidth(100);
 				v.setLayoutX(717);
 				v.setLayoutY(6);
+				
+				Label lbInfo = new Label("Name: " + temp.getFirstName() + "\nId: " + temp.getId() + "\nGender: " + temp.getGender());
+				lbInfo.setLayoutX(717);
+				lbInfo.setLayoutY(6 + 100);
+				
+				mateo.getChildren().add(lbInfo);
 				mateo.getChildren().add(v);
 		//}
 		} catch(NullPointerException e) {

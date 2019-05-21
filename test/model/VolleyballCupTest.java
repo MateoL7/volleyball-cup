@@ -2,6 +2,7 @@ package model;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 
@@ -41,8 +42,8 @@ public class VolleyballCupTest {
 	}
 	
 	public void setupScenary3() {
-		vc = new VolleyballCup();
 	}
+	
 
 	@Test
 	public void testAddParticipant() {
@@ -54,7 +55,7 @@ public class VolleyballCupTest {
 	}
 
 	@Test
-	public void testSearchParticipant() {
+	public void testSearchingParticipant() {
 		setupScenary1();
 		Participant searched = vc.searchingParticipant("96-6406996");
 
@@ -62,7 +63,7 @@ public class VolleyballCupTest {
 		assertTrue("Not the same participant", searched.equals(p));
 	}
 	@Test
-	public void testSearchSpectator() {
+	public void testSearchingSpectator() {
 		setupScenary2();
 		Spectator searched = vc.searchingSpectator("96-6406996");
 
@@ -70,26 +71,44 @@ public class VolleyballCupTest {
 		assertTrue("Not the same spectator", searched.getId().equalsIgnoreCase(s.getId()));
 	}
 	@Test
-	public void testCreateSpecatatorTree() throws IOException {
+	public void testCreateSpectatorTree() throws IOException {
 		setupScenary1();
 		String country = "China";
 		String filename = "data\\Files.csv";
 		Spectator s = vc.createSpectatorTree(country, filename);
 		assertNotNull("The object is null", s);
 	}
-//	@Test
-//	public void testCreateParticipantList() {
-//		setupScenary1();
-//		String country = "China";
-//		Participant x = vc.createCountryList(country);
-//		assertNotNull("The object is not created correctly", x);
-//	}
-//	@Test
-//	public void testAddSpectator() {
-//		
-//	}
-//	@Test 
-//	public void testLoadInfo() {
-//		
-//	}
+	@Test
+	public void testCreateCountryList() {
+		setupScenary1();
+		try {
+			vc.loadInfo("data\\Files.csv");
+			Participant x = vc.createCountryList("China");
+			assertNotNull("The object is not created correctly", x);
+		} catch (IOException e) {
+			fail("The object is not created correctly");
+		}
+	}
+	@Test
+	public void testVolleyballCup() {
+		setupScenary3();
+		vc = new VolleyballCup();
+		assertNotNull("Not creating the object of VolleyballCup", vc);
+	}
+	@Test
+	public void testAddSpectator() {
+		setupScenary2();
+		vc.addSpectator("49-3304903","Hadley","Glanester","ediggar1@howstuffworks.com","Male","Colombia","https://robohash.org/autemnumquamnam.bmp?size=50x50&set=set1","5/10/1996");
+		s = vc.searchingSpectator("49-3304903");
+		assertNotNull("The method is not adding the Spectator", s);
+	}
+	@Test 
+	public void testLoadInfo(){
+		setupScenary2();
+		try {
+			vc.loadInfo("data\\Files.csv");
+		} catch (IOException e) {
+			fail("The file could not be loaded");
+		}
+	}
 }
