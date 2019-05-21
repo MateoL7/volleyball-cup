@@ -259,16 +259,20 @@ public class VolleyController {
 		mateo.getChildren().add(line4);
 	}
 	public void showSpectators(ActionEvent ae) {
-		Spectator temp = newSpectator;
-		System.out.println(temp);
-		//if(temp != null) {
-			Image i = new Image(temp.getPhoto());
-			ImageView v = new ImageView(i);
-			v.setFitHeight(100);
-			v.setFitWidth(100);
-			v.setLayoutX(717);
-			v.setLayoutY(6);
-			mateo.getChildren().add(v);
-		///}
+		try {
+			Spectator temp = newSpectator;
+			--System.out.println(temp);
+			//if(temp != null) {
+				Image i = new Image(temp.getPhoto());
+				ImageView v = new ImageView(i);
+				v.setFitHeight(100);
+				v.setFitWidth(100);
+				v.setLayoutX(717);
+				v.setLayoutY(6);
+				mateo.getChildren().add(v);
+		//}
+		} catch(NullPointerException e) {
+			System.out.println("Null pointer");
+		}
 	}
 }

@@ -17,7 +17,10 @@ public class VolleyballCup {
 	public void setFirst(Participant p) {
 		first = p;
 	}
-
+	/**
+	 * This method loads the information from the .csv file and creates
+	 * the tree and the list using external methods
+	 */
 	public void loadInfo(String path) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(new File(path)));
 		String line = br.readLine();
@@ -43,7 +46,9 @@ public class VolleyballCup {
 		}
 		br.close();
 	}
-
+	/**
+	 * This method adds a new Spectator to the tree
+	 */
 	public void addSpectator(String id, String firstName, String lastName, String email, String gender, String country, String photo, String birthday) {
 		Spectator p = new Spectator(id, firstName, lastName, email, gender, country, photo, birthday);
 		if(root == null) {
@@ -72,7 +77,9 @@ public class VolleyballCup {
 
 		}
 	}
-
+	/**
+	 * This method searches for the spectator (in the tree) that matches the id given by the user
+	 */
 	public Spectator searchingSpectator(String id) {
 		Spectator found = null;
 		Spectator current = root;
@@ -91,6 +98,9 @@ public class VolleyballCup {
 		}
 		return found;
 	}
+	/**
+	 * This method adds a new participant to the linked list
+	 */
 	public void addParticipant(String id, String firstName, String lastName, String email, String gender, String country, String photo, String birthday) {
 		Participant p = new Participant(id, firstName, lastName, email, gender, country, photo, birthday);
 
@@ -111,6 +121,9 @@ public class VolleyballCup {
 			first.setPrev(p);
 		}
 	}
+	/**
+	 * This method searches for the participant (in the linked list) that matches the id given by the user
+	 */
 	public Participant searchingParticipant(String id) {
 		Participant found = null;
 		Participant current = first;

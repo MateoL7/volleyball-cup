@@ -16,6 +16,8 @@ public class ParticipantTest {
 	private String country;
 	private String photo;
 	private String birthday;
+	
+	private Participant p;
 		
 
 	private void setupScenary1() {
@@ -33,7 +35,7 @@ public class ParticipantTest {
 	@Test
 	public void testParticipant() {
 		setupScenary1();
-		Participant p = new Participant(id, firstName, lastName, email, gender, country, photo, birthday);
+		p = new Participant(id, firstName, lastName, email, gender, country, photo, birthday);
 		assertNotNull("The builder is not working", p);
 		assertTrue("Not the right value", p.getId().equalsIgnoreCase(id));
 		assertTrue("Not the right value", p.getFirstName().equalsIgnoreCase(firstName));

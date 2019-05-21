@@ -16,6 +16,9 @@ public class SpectatorTest {
 	private String photo;
 	private String birthday;
 	
+	private Spectator s;
+	private Spectator s2;
+	
 	private void setupScenary1() {
 		id = "78-9883409";
 		firstName = "Roldan";
@@ -27,19 +30,32 @@ public class SpectatorTest {
 		gender = "Male";
 	}
 	
+	private void setupScenary2() {
+		s = new Spectator(id, firstName, lastName, email, gender, country, photo, birthday);
+		s2 = new Spectator(id, firstName, lastName, email, gender, country, photo, birthday );
+	}
+	
 	@Test
 	public void testSpectator() {
 		setupScenary1();
-		Spectator p = new Spectator(id, firstName, lastName, email, gender, country, photo, birthday);
-		assertNotNull("The builder is not working", p);
-		assertTrue("Not the right value", p.getId().equalsIgnoreCase(id));
-		assertTrue("Not the right value", p.getFirstName().equalsIgnoreCase(firstName));
-		assertTrue("Not the right value", p.getLastName().equalsIgnoreCase(lastName));
-		assertTrue("Not the right value", p.getEmail().equalsIgnoreCase(email));
-		assertTrue("Not the right value", p.getGender().equalsIgnoreCase(gender));
-		assertTrue("Not the right value", p.getCountry().equalsIgnoreCase(country));
-		assertTrue("Not the right value", p.getPhoto().equalsIgnoreCase(photo));
-		assertTrue("Not the right value", p.getBirthday().equalsIgnoreCase(birthday));
+		s = new Spectator(id, firstName, lastName, email, gender, country, photo, birthday);
+		assertNotNull("The builder is not working", s);
+		assertTrue("Not the right value", s.getId().equalsIgnoreCase(id));
+		assertTrue("Not the right value", s.getFirstName().equalsIgnoreCase(firstName));
+		assertTrue("Not the right value", s.getLastName().equalsIgnoreCase(lastName));
+		assertTrue("Not the right value", s.getEmail().equalsIgnoreCase(email));
+		assertTrue("Not the right value", s.getGender().equalsIgnoreCase(gender));
+		assertTrue("Not the right value", s.getCountry().equalsIgnoreCase(country));
+		assertTrue("Not the right value", s.getPhoto().equalsIgnoreCase(photo));
+		assertTrue("Not the right value", s.getBirthday().equalsIgnoreCase(birthday));
+	}
+	
+	@Test
+	public void testCompareTo() {
+		setupScenary1();
+		setupScenary2();
+		assertTrue("Not comparing correctly", s.compareTo(s2) == 0);
+		
 	}
 
 }
