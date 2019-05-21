@@ -188,7 +188,7 @@ public class VolleyController {
 			JOptionPane.showMessageDialog(null, "Please type another id");
 		}
 		after = System.currentTimeMillis();
-		spectatorTime.setText("Time: " + ((after-before)/1000) + "s");
+		spectatorTime.setText("Time: " + (after-before) + " ms");
 	}
 	public void searchParticipant(ActionEvent event) {
 		String idPar = participantId.getText();
@@ -212,7 +212,7 @@ public class VolleyController {
 			JOptionPane.showMessageDialog(null, "Please type another id");
 		}
 		after = System.currentTimeMillis();
-		participantTime.setText("Time: " + ((after-before)/1000) + "s");
+		participantTime.setText("Time: " + (after-before) + " ms");
 	}
 
 	public void loadCountry(ActionEvent e) {
