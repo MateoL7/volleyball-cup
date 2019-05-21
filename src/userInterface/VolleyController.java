@@ -252,7 +252,8 @@ public class VolleyController {
 			v.setLayoutX(counterx);
 			v.setLayoutY(countery);
 			
-			Label lbInfo = new Label("Name: " + temp.getFirstName() + "\nId: " + temp.getId() + "\nGender: " + temp.getGender());
+			Label lbInfo = new Label("Name: " + temp.getFirstName() + "\nId: " + temp.getId() + "\nGender: " + temp.getGender()
+			+ "\nCountry: " + temp.getCountry());
 			lbInfo.setLayoutX(counterx);
 			lbInfo.setLayoutY(countery + 100);
 			
@@ -297,7 +298,8 @@ public class VolleyController {
 			v1.setLayoutX(counterx);
 			v1.setLayoutY(countery);
 			
-			Label lbInfo = new Label("Name: " + temp.getFirstName() + "\nId: " + temp.getId() + "\nGender: " + temp.getGender());
+			Label lbInfo = new Label("Name: " + temp.getFirstName() + "\nId: " + temp.getId() + "\nGender: " + temp.getGender()
+			+ "\nCountry: " + temp.getCountry());
 			lbInfo.setLayoutX(counterx);
 			lbInfo.setLayoutY(countery + 100);
 			
@@ -316,7 +318,8 @@ public class VolleyController {
 					v.setLayoutX(actualx);
 					v.setLayoutY(actualy);
 					
-					Label lbInfo2 = new Label("Name: " + rightS.getFirstName() + "\nId: " + rightS.getId() + "\nGender: " + rightS.getGender());
+					Label lbInfo2 = new Label("Name: " + rightS.getFirstName() + "\nId: " + rightS.getId() + "\nGender: " + rightS.getGender()
+					+ "\nCountry: " + rightS.getCountry());
 					lbInfo2.setLayoutX(actualx);
 					lbInfo2.setLayoutY(actualy+ 100);
 					
@@ -340,7 +343,8 @@ public class VolleyController {
 					v.setLayoutX(actualx);
 					v.setLayoutY(actualy);
 					
-					Label lbInfo2 = new Label("Name: " + leftS.getFirstName() + "\nId: " + leftS.getId() + "\nGender: " + leftS.getGender());
+					Label lbInfo2 = new Label("Name: " + leftS.getFirstName() + "\nId: " + leftS.getId() + "\nGender: " + leftS.getGender()
+					+ "\nCountry: " + leftS.getCountry());
 					lbInfo2.setLayoutX(actualx);
 					lbInfo2.setLayoutY(actualy + 100);
 					
@@ -356,7 +360,7 @@ public class VolleyController {
 			
 		}
 		} catch(NullPointerException e) {
-			System.out.println("Null pointer");
+			System.out.println("Something inside the code is producing a null pointer");
 		}
 	}
 }
