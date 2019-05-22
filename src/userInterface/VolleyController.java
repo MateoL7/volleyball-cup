@@ -26,9 +26,9 @@ public class VolleyController {
 
 	@FXML
 	private TextField fileDestination;
-	
+
 	@FXML
-    private Label countrySelected;
+	private Label countrySelected;
 
 	@FXML
 	private Button explore;
@@ -52,8 +52,8 @@ public class VolleyController {
 	private Label fileMessage;
 
 	@FXML
-    private Label informative;
-	
+	private Label informative;
+
 	@FXML
 	private Label spectatorMessage;
 
@@ -251,13 +251,13 @@ public class VolleyController {
 			v.setFitWidth(100);
 			v.setLayoutX(counterx);
 			v.setLayoutY(countery);
-			
+
 			Label lbInfo = new Label("Name: " + temp.getFirstName() + "\nId: " + temp.getId() + "\nGender: " + temp.getGender()
 			+ "\nCountry: " + temp.getCountry());
 			lbInfo.setLayoutX(counterx);
 			lbInfo.setLayoutY(countery + 100);
-			
-			
+
+
 			Line l = new Line(startx,starty,distance,starty);
 			l.setStrokeWidth(3);
 			Line l2 = new Line(startx,starty2,distance,starty2);
@@ -289,23 +289,23 @@ public class VolleyController {
 			double right = 100;
 			double downR = 150;
 			double downL = 150;
-			
-			
+
+
 			Image i1 = new Image(temp.getPhoto());
 			ImageView v1 = new ImageView(i1);
 			v1.setFitHeight(100);
 			v1.setFitWidth(100);
 			v1.setLayoutX(counterx);
 			v1.setLayoutY(countery);
-			
+
 			Label lbInfo = new Label("Name: " + temp.getFirstName() + "\nId: " + temp.getId() + "\nGender: " + temp.getGender()
 			+ "\nCountry: " + temp.getCountry());
 			lbInfo.setLayoutX(counterx);
 			lbInfo.setLayoutY(countery + 100);
-			
+
 			mateo.getChildren().add(lbInfo);
 			mateo.getChildren().add(v1);
-			
+
 			while((temp.getRight() != null || temp.getLeft() != null) && count <= 7) {
 				if(temp.getRight() != null) {
 					Spectator rightS = temp.getRight();
@@ -317,23 +317,23 @@ public class VolleyController {
 					double actualy = countery + downR;
 					v.setLayoutX(actualx);
 					v.setLayoutY(actualy);
-					
+
 					Label lbInfo2 = new Label("Name: " + rightS.getFirstName() + "\nId: " + rightS.getId() + "\nGender: " + rightS.getGender()
 					+ "\nCountry: " + rightS.getCountry());
 					lbInfo2.setLayoutX(actualx);
 					lbInfo2.setLayoutY(actualy+ 100);
-					
+
 					mateo.getChildren().add(lbInfo2);
 					mateo.getChildren().add(v);
-					
+
 					right += 100;
 					downR += 100;
-					
+
 					temp = temp.getRight();
 					count++;
 				}
-				if(temp.getRight() != null) {
-					Spectator leftS = temp.getRight();
+				if(temp.getLeft() != null) {
+					Spectator leftS = temp.getLeft();
 					Image i = new Image(leftS.getPhoto());
 					ImageView v = new ImageView(i);
 					v.setFitHeight(100);
@@ -342,23 +342,23 @@ public class VolleyController {
 					double actualy = countery + downL;
 					v.setLayoutX(actualx);
 					v.setLayoutY(actualy);
-					
+
 					Label lbInfo2 = new Label("Name: " + leftS.getFirstName() + "\nId: " + leftS.getId() + "\nGender: " + leftS.getGender()
 					+ "\nCountry: " + leftS.getCountry());
 					lbInfo2.setLayoutX(actualx);
 					lbInfo2.setLayoutY(actualy + 100);
-					
+
 					mateo.getChildren().add(lbInfo2);
 					mateo.getChildren().add(v);
-					
+
 					left += 100;
 					downL += 100;
-					
+
 					temp = temp.getLeft();
 					count++;
 				}
-			
-		}
+
+			}
 		} catch(NullPointerException e) {
 			System.out.println("Something inside the code is producing a null pointer");
 		}
